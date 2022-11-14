@@ -30,6 +30,7 @@ const string PR_DO = "DO";
 const string PR_CONST = "CONST";
 const string PR_END= "END";
 const string PR_IF = "IF";
+const string PR_ODD = "ODD";
 const string PR_READLN = "READLN";
 const string PR_PROCEDURE = "PROCEDURE";
 const string PR_THEN = "THEN";
@@ -262,7 +263,7 @@ string devolverTipoCadena(string cad){
  */
 bool esPalabraReservada(string cad){
     int contador=0;
-    string palabrasReservadas[]={PR_BEGIN, PR_CALL, PR_DO, PR_CONST, PR_END, PR_IF, "ODD", PR_READLN, PR_PROCEDURE, PR_THEN, PR_VAR, PR_WHILE, PR_WRITE, PR_WRITELN};
+    string palabrasReservadas[]={PR_BEGIN, PR_CALL, PR_DO, PR_CONST, PR_END, PR_IF, PR_ODD, PR_READLN, PR_PROCEDURE, PR_THEN, PR_VAR, PR_WHILE, PR_WRITE, PR_WRITELN};
     string cadUpper;
     do{
         cadUpper+=toupper(cad[contador]);
@@ -855,7 +856,7 @@ void proposicion(FILE *archivo, informacion &datos, tabla tablaSemantica, int ba
  */
 void condicion(FILE *archivo, informacion &datos, tabla tablaSemantica, int base, unsigned char memoria[], int &contadorMemoria, int contadorVariable, int &lineaError, int &posicionParaFixUp){
     int desplazamiento=0;
-    if(datos.tipoDato=="ODD"){
+    if(datos.tipoDato==PR_ODD){
         datos=analizadorLexico(archivo, lineaError);
         expresion(archivo, datos, tablaSemantica, base+desplazamiento, memoria, contadorMemoria, contadorVariable, lineaError);
         popEax(memoria, contadorMemoria);
