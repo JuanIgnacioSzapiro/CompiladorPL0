@@ -925,7 +925,7 @@ void expresion(FILE *archivo, informacion &datos, tabla tablaSemantica, int base
     if(datos.datoLeido=="+"){
         datos=analizadorLexico(archivo, lineaError);
     }
-    else if(datos.datoLeido=="-"){
+    if(datos.datoLeido=="-"){
         datos=analizadorLexico(archivo, lineaError);
     }
     termino(archivo, datos, tablaSemantica, base+desplazamiento, memoria, contadorMemoria, contadorVariable, lineaError);
